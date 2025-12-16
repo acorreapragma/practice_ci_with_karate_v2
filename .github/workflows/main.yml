@@ -1,18 +1,35 @@
+# Nombre de workflow
 name: Ci Karate
 
+# Evento que activa workflow
 on:
   push:
-    branches: 
+    branches:
       - main
 
+# Jobs del workflow
 jobs:
+  # nombre del  del workflow
   karate_build_and_rund_test:
+    # Maquina virtual donde se ejecuta el workflow
     runs-on: ubuntu-latest
-    
+    # Paso para validaciones de nuestro repo
     steps:
-        - name: checkou k6 repo
-          uses: actions/checkout@v4
-        - name: Setup Gradle
-          uses: gradle/gradle-build-action@v2
-        - name: Run build with Gradle Wrapper
-          run: ./gradlew build
+      # Descargar nuestro repo
+      - name: checkou k6 repo
+        uses: actions/checkout@v4
+
+      # Configuración  java
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: 17
+
+      # Configuración  jgradleava
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+
+      # Ejecutar pruebas
+      - name: Run build with Gradle Wrapper
+        run: ./gradlew build
