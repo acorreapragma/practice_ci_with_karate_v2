@@ -1,0 +1,18 @@
+name: Ci Karate
+
+on:
+  push:
+    branches: 
+      - main
+
+jobs:
+  karate_build_and_rund_test:
+    runs-on: ubuntu-latest
+    
+    steps:
+        - name: checkou k6 repo
+          uses: actions/checkout@v4
+        - name: Setup Gradle
+          uses: gradle/gradle-build-action@v2
+        - name: Run build with Gradle Wrapper
+          run: ./gradlew build
