@@ -9,6 +9,6 @@ class SmokeUserTest extends BaseKarateRunner {
     @Test
     @DisplayName("Run smoke tests")
     void runSmoke() {
-        run("@smoke", 2);
+        run("classpath:users", "@smoke", 2, "smoke-users");
     }
 }

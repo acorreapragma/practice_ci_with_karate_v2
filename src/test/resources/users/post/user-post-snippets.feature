@@ -1,4 +1,4 @@
-    @Ignore @smoke @regression
+    @smoke @regression
 Feature: Reusable scenarios for post a user
 
     # Migramos a una API más amigable para la automatización

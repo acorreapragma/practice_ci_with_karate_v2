@@ -1,5 +1,5 @@
 # Nombre de workflow
-name: Ci Karate
+name: CI Karate
 
 # Evento que activa workflow
 on:
@@ -7,29 +7,38 @@ on:
     branches:
       - main
 
-# Jobs del workflow
+# Trabajos del workflow
 jobs:
-  # nombre del  del workflow
-  karate_build_and_rund_test:
+  # Nombre del trabajo
+  karate_build_and_run_test:
     # Maquina virtual donde se ejecuta el workflow
     runs-on: ubuntu-latest
-    # Paso para validaciones de nuestro repo
+    # Pasos para ejecutar en la máquina virtual
     steps:
       # Descargar nuestro repo
-      - name: checkou k6 repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Configuración  java
+      # Configuración de Java
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: "temurin"
           java-version: 17
 
-      # Configuración  jgradleava
+      # Configuración de Gradle
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v5
 
       # Ejecutar pruebas
       - name: Run build with Gradle Wrapper
         run: ./gradlew build
+
+      # Subir el reporte de pruebas como un artefacto
+      - name: Upload test report
+        # Se ejecuta siempre para poder ver el reporte incluso si las pruebas fallan
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: karate-report
+          path: build/cucumber-reports/

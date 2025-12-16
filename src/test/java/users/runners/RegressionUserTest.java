@@ -9,6 +9,6 @@ class RegressionUserTest extends BaseKarateRunner {
     @Test
     @DisplayName("Run regression tests")
     void runRegression() {
-        run("@regression", 4);
+        run("classpath:users", "@regression", 4, "regression-users");
     }
 }

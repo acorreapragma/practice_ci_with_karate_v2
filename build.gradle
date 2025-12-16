@@ -39,3 +39,21 @@ sourceSets {
         }
     }
 }
+
+tasks.register('smokeTest', Test) {
+    description = 'Run smoke tests'
+    group = 'verification'
+
+    useJUnitPlatform()
+
+    include '**/Smoke*Test.class'
+}
+
+tasks.register('regressionTest', Test) {
+    description = 'Run regression tests'
+    group = 'verification'
+
+    useJUnitPlatform()
+
+    include '**/Regression*Test.class'
+}
