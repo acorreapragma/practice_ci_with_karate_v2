@@ -1,3 +1,4 @@
+    @smoke @regression
 Feature: Post resources to JSONPlaceholder
 
   Background:

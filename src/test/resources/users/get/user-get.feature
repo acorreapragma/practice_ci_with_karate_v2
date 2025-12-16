@@ -1,3 +1,4 @@
+    @smoke
 Feature: Get user from JSONPlaceholder
 
   Background:

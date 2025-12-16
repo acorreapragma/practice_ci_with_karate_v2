@@ -1,3 +1,4 @@
+    @regression
 Feature: Delete user on JSONPlaceholder
 
   Background:
