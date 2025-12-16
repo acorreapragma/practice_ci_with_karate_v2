@@ -66,6 +66,8 @@ jobs:
     # Maquina virtual donde se ejecuta el workflow
     runs-on: ubuntu-latest
     # Pasos para ejecutar en la máquina virtual
+    needs: dependency_scan
+
     steps:
       # Descargar nuestro repo
       - name: Checkout repository
