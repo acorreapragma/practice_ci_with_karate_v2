@@ -1,32 +1,34 @@
-@Ignore
+    @Ignore
 Feature: Reusable scenarios for post a user
 
+    # Migramos a una API más amigable para la automatización
   Background:
-    * url "https://reqres.in"
+    * url "https://jsonplaceholder.typicode.com"
 
-  @Create-user
+    @Create-user
   Scenario: Post a user
-    * path "/api/users/"
-    Given request {  "name": "mauro",  "job": "qa"  }
+    * path "/posts"
+    # Adaptamos el cuerpo de la solicitud al formato de la nueva API
+    Given request { title: 'foo', body: 'bar', userId: 1 }
     When method post
     Then status 201
     And def contactId = $.id
 
-  @Create-user-table-variable
+    @Create-user-table-variable
   Scenario: Post a user with table and variable received
-    * path path
-    Given request {  "name": "#(data.name)",  "job": "#(data.job)"  }
+    * path "/posts"
+    # Adaptamos el cuerpo de la solicitud al formato de la nueva API
+    Given request { title: '#(data.title)', body: '#(data.body)', userId: 1 }
     When method post
     Then status 201
     And def contactId = $.id
 
-  @Create-user-only-table
+    @Create-user-only-table
   Scenario: Post a user with only table received
-    * path "/api/users/"
-    Given request {  name: "#(name)",  job: '#(job)'  }
+    * path "/posts"
+    # Adaptamos el cuerpo de la solicitud al formato de la nueva API
+    Given request { title: '#(title)', body: '#(body)', userId: 1 }
     When method post
     Then status 201
     And def contactId = $.id
     * print "el id del usuario creado es " + contactId
-
-

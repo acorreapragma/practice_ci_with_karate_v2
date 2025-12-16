@@ -1,18 +1,21 @@
-Feature: Get user from Reqres
+Feature: Get user from JSONPlaceholder
 
   Background:
-    * url "https://reqres.in"
+    # Usaremos una API más amigable para las pruebas automatizadas
+    * url "https://jsonplaceholder.typicode.com"
 
-  @Basic
+    @Basic
   Scenario: Get a user
-    Given path "/api/users/" + "2"
+    # En esta API, los usuarios se obtienen directamente por ID
+    Given path "/users/1"
     When method get
     Then status 200
+    # Verificamos que el ID del usuario en la respuesta sea 1
+    And match response.id == 1
 
-  @Read-Json-Fuzzy_matching
+    @Read-Json-Fuzzy_matching
   Scenario: Get user list
-    * def jsonResponse = read("../json/list_of_users.json")
-    Given path "/api/users?page=1"
+    Given path "/users"
     When method get
     Then status 200
-    And match $  == jsonResponse
+    And match each response == { id: '#number', name: '#string', username: '#string', email: '#string', address: '#object', phone: '#string', website: '#string', company: '#object' }

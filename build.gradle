@@ -10,12 +10,25 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'com.intuit.karate:karate-junit5:1.4.0.RC3'
+    // Se actualiza a la versión estable de Karate
+    testImplementation 'com.intuit.karate:karate-junit5:1.4.0'
     testImplementation 'net.masterthought:cucumber-reporting:5.7.5'
+    // Dependencia necesaria para el método generateReport
+    testImplementation 'commons-io:commons-io:2.11.0'
 }
 
 test{
     useJUnitPlatform()
+
+        testLogging {
+        events "passed", "failed", "skipped"
+        showStandardStreams = true
+    }
+
+     reports {
+        html.required = true
+        junitXml.required = true
+    }
 }
 
 sourceSets {
