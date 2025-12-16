@@ -1,0 +1,27 @@
+name: CI Karate
+
+on:
+  push:
+    branches:
+      - main
+  pull_rquest:
+
+jobs:
+  karte_build_and_run_test6:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v6.0.1
+
+      - name: Steup java
+        uses: actions/steup-java@v4
+        with:
+          distribuction: "temurin"
+          java-version: 17
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+
+      - name: Run build with Gradle Wrapper
+        run: ./gradlew build
