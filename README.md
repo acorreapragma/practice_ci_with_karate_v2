@@ -1,5 +1,3 @@
-
-
 <h1 align="center">
   <br>
   <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://f.hubspotusercontent20.net/hubfs/2829524/Copia%20de%20LOGOTIPO_original-2.png"></a>
@@ -25,6 +23,7 @@
 </p>
 
 En este proyecto base puede encontrar diferentes casos de uso con las diferentes funcionalidades de Karate. Como: Config | Scenarios outline | Variables | Reutilización - Calls | Read | Matchers y fuzzy matching | Retry | Expresiones regulares | tables | JS functions | Java functions | Condicionales | Paralelización | print | Ejecución con Runners | Variables de entorno y ejecución desde consola.
+
 <p align="center">
   <a href="#topicos">Topicos</a> •
   <a href="#instalación-y-ejecución">Instalación y ejecución</a> •
@@ -41,11 +40,11 @@ En este proyecto base puede encontrar diferentes casos de uso con las diferentes
 
 ## Topicos
 
-* Karate
-* Java
-* Rest
-* Gherkin
-* Cucumber
+- Karate
+- Java
+- Rest
+- Gherkin
+- Cucumber
 
 ## Instalación y ejecución
 
@@ -53,32 +52,17 @@ Para clonar y ejecutar está aplicación, necesitas [Git](https://git-scm.com) a
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/amitmerchant1990/electron-markdownify
+$ git clone https://github.com/acorreapragma/practice_ci_with_karate_v2.git
 
 # Go into the repository
-$ cd electron-markdownify
-
-# Install dependencies
-$ npm install
-
-# Run the app
-$ npm start
-```
-
-### Run con java jar
-```
-java -jar karate-1.4.0.jar <ruta_del_archivo.feature>
-
-java -jar karate-1.4.0.jar -Dkarate.options="--config karate-config.js" -DbaseUrl=https://miotraurl.com ruta_del_archivo.feature
-
-java -jar karate-1.4.0.jar -Dkarate.options="--config karate-config.js" ruta_del_archivo.feature
+$ cd practice_ci_with_karate_v2
 ```
 
 #### ejemplo run con java jar
 
 ```
  java -jar karate-1.4.0.jar src/test/java/users/get/user-get.feature
- 
+
 ```
 
 ### Run con gradle
@@ -86,40 +70,40 @@ java -jar karate-1.4.0.jar -Dkarate.options="--config karate-config.js" ruta_del
 ```
 
  test --tests <nombre_de_clase>.<nombre_del_método> -D<propiedades_del_sistema>
- 
- test --tests SampleTesClassRunner -DbaseUrl=https://reqres.in 
- 
- test --tests SampleTesClassRunner.testTagsMethod -DbaseUrl=https://reqres.in 
- 
+
+ test --tests SampleTesClassRunner -DbaseUrl=https://reqres.in
+
+ test --tests SampleTesClassRunner.testTagsMethod -DbaseUrl=https://reqres.in
+
  test -Dtest=SampleTesClassRunner#testTagsMethod
- 
+
 ```
 
 #### ejemplo run con gradle
 
 ```
- gradle test --tests ManagementUserTest.testParallel -DbaseUrl=https://reqres.in 
- 
- gradle test --tests UserGetRunner -DbaseUrl=https://reqres.in 
- gradle test --tests UserGetRunner.userGet -DbaseUrl=https://reqres.in 
- 
- gradle test -Dtest=UserGetRunner#userGet -DbaseUrl=https://reqres.in 
- 
-```
+ gradle test --tests ManagementUserTest.testParallel -DbaseUrl=https://reqres.in
 
+ gradle test --tests UserGetRunner -DbaseUrl=https://reqres.in
+ gradle test --tests UserGetRunner.userGet -DbaseUrl=https://reqres.in
+
+ gradle test -Dtest=UserGetRunner#userGet -DbaseUrl=https://reqres.in
+
+```
 
 ## Descarga
 
-Puedes descargar el proyecto en el enlace [download](https://github.com/amitmerchant1990/electron-markdownify/releases/tag/v1.2.0) 
+Puedes descargar el proyecto en el enlace [download](https://github.com/amitmerchant1990/electron-markdownify/releases/tag/v1.2.0)
 
 ## Consideraciones
+
 El proyecto usa como servicio base el servicio demo Reqres, el correcto funcionamiento de los casos de uso dependeran de la disponibilidad del servicio demo en cuestion
 
 ## Tecnologias
--   [JDK java]
--   [Karate]
--   [Gradle]
 
+- [JDK java]
+- [Karate]
+- [Gradle]
 
 ## Autores
 
@@ -131,7 +115,6 @@ This software uses the following open source packages:
 ## Relacionados
 
 - [Proyecto Karate Base](https://github.com/amitmerchant1990/markdownify-web)
-
 
 ## Roadmap
 
