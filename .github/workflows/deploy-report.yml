@@ -1,0 +1,49 @@
+# Nombre del workflow
+name: Deploy Karate Report to GitHub Pages
+
+# Se activa cuando el workflow "CI Karate" se completa en la rama main
+on:
+  workflow_run:
+    workflows: ["CI Karate"]
+    types:
+      - completed
+    branches: [main]
+
+# Permisos para que el workflow pueda escribir en la rama gh-pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  # Trabajo para desplegar el reporte en GitHub Pages
+  deploy_report:
+    name: Deploy Report to Pages
+    runs-on: ubuntu-latest
+    # Solo se ejecuta si el workflow anterior fue exitoso
+    if: github.event.workflow_run.conclusion == 'success'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Download karate report artifact from CI workflow
+        uses: actions/download-artifact@v4
+        with:
+          # Nombre del artefacto subido por el workflow 'CI Karate'
+          name: karate-report
+          # Descarga el artefacto de la ejecución del workflow que activó este
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Sube el contenido descargado (el reporte) para que Pages lo despliegue
+          path: .
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
