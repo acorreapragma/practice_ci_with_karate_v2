@@ -119,3 +119,5 @@ This software uses the following open source packages:
 ## Roadmap
 
 - [Guia QA](https://github.com/amitmerchant1990/pomolectron) - (En construcción) Una guia de proyectos Orientados a la Calidad de Software
+
+### Test
