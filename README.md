@@ -120,4 +120,4 @@ This software uses the following open source packages:
 
 - [Guia QA](https://github.com/amitmerchant1990/pomolectron) - (En construcción) Una guia de proyectos Orientados a la Calidad de Software
 
-### Test actualizado desde el repor local
+### Test actualizado desde el repor local v3
