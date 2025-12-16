@@ -35,6 +35,19 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: ${{ github.event.workflow_run.id }}
 
+      - name: Create index.html for report navigation
+        run: |
+          echo '<!DOCTYPE html>' > index.html
+          echo '<html>' >> index.html
+          echo '<head><title>Karate Test Reports</title></head>' >> index.html
+          echo '<body>' >> index.html
+          echo '<h1>Karate Test Reports</h1>' >> index.html
+          echo '<ul>' >> index.html
+          echo '<li><a href="smoke-users/karate-summary.html">Smoke Tests Report</a></li>' >> index.html
+          echo '<li><a href="regression-users/karate-summary.html">Regression Tests Report</a></li>' >> index.html
+          echo '</ul>' >> index.html
+          echo '</body></html>' >> index.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
