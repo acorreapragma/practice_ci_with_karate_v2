@@ -28,6 +28,7 @@ jobs:
         run: ./gradlew check
 
   karte_build_and_run_test6:
+    needs: lint_and_check
     runs-on: ubuntu-latest
 
     steps:
