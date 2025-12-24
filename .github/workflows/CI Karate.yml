@@ -3,7 +3,7 @@ name: CI Karate
 on:
   push:
     branches:
-      - main
+      - feature
   pull_request:
 
 jobs:
